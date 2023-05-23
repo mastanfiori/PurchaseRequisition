@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: ui.ssuite.s2p.mm.pur.pr.prcss.s1.MM_PR_PRCS1Extension_Main
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: DEV_100
+          url: http://s4hana.dev.sap.llmhq.com:443
+        app:
+          name: ZMMPRPRCS1
+          description: Process Purchase Requisitions
+          package: ZFIORI
+          transport: DEVK901894
+        exclude:
+          - /test/

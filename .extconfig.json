@@ -1,0 +1,63 @@
+{
+    "controllers": {
+        "App": "MM_PR_PRCS1%2fcontroller%2fApp.controller.js",
+        "ContractPreview": "MM_PR_PRCS1%2fcontroller%2fContractPreview.controller.js",
+        "PurchaseOrderPreview": "MM_PR_PRCS1%2fcontroller%2fPurchaseOrderPreview.controller.js",
+        "RFQPreview": "MM_PR_PRCS1%2fcontroller%2fRFQPreview.controller.js",
+        "Worklist": "MM_PR_PRCS1%2fcontroller%2fWorklist.controller.js"
+    },
+    "views": {
+        "App": "MM_PR_PRCS1%2fview%2fApp.view.xml",
+        "ContractPreview": "MM_PR_PRCS1%2fview%2fContractPreview.view.xml",
+        "PurchaseOrderPreview": "MM_PR_PRCS1%2fview%2fPurchaseOrderPreview.view.xml",
+        "RFQPreview": "MM_PR_PRCS1%2fview%2fRFQPreview.view.xml",
+        "Worklist": "MM_PR_PRCS1%2fview%2fWorklist.view.xml"
+    },
+    "fragments": {
+        "BidderDialog": "MM_PR_PRCS1%2ffragment%2fBidderDialog.fragment.xml",
+        "BusinessCard": "MM_PR_PRCS1%2ffragment%2fBusinessCard.fragment.xml",
+        "discardCtr": "MM_PR_PRCS1%2ffragment%2fdiscardCtr.fragment.xml",
+        "discardPO": "MM_PR_PRCS1%2ffragment%2fdiscardPO.fragment.xml",
+        "CtrPreviewGenInfo": "MM_PR_PRCS1%2fview%2fCtrPreviewGenInfo.fragment.xml",
+        "CtrPreviewItems": "MM_PR_PRCS1%2fview%2fCtrPreviewItems.fragment.xml",
+        "POPreviewGenInfo": "MM_PR_PRCS1%2fview%2fPOPreviewGenInfo.fragment.xml",
+        "POPreviewItems": "MM_PR_PRCS1%2fview%2fPOPreviewItems.fragment.xml",
+        "POPreviewObjectPage": "MM_PR_PRCS1%2fview%2fPOPreviewObjectPage.fragment.xml",
+        "SosDialog": "MM_PR_PRCS1%2fview%2fSosDialog.fragment.xml",
+        "editDialog": "MM_PR_PRCS1%2fview%2feditDialog.fragment.xml"
+    },
+    "type": "abaprep",
+    "shouldLinkComponentToManifest": true,
+    "component": "MM_PR_PRCS1%2fComponent.js",
+    "manifest": "MM_PR_PRCS1%2fmanifest.json",
+    "versionJsonPath": "MM_PR_PRCS1%2fversion.json",
+    "minUI5Version": "1.90.7",
+    "system": {
+        "name": "BGE_DEV_300",
+        "description": "BGE DEV 300 Unit Testing",
+        "proxyUrlPrefix": "/destinations/BGE_DEV_300",
+        "path": "/sap/bc/adt",
+        "url": "/destinations/BGE_DEV_300/sap/bc/adt",
+        "wattUsage": "dev_abap",
+        "proxyType": "OnPremise",
+        "systemId": "DEV",
+        "entryPath": "/sap/bc/adt",
+        "sapClient": "300",
+        "additionalData": []
+    },
+    "discoveryStatus": {
+        "csrfToken": "tIrWJX6Az2toxv_Ug-Ea6A==",
+        "transports": "/destinations/BGE_DEV_300/sap/bc/adt/cts/transports",
+        "transportchecks": "/destinations/BGE_DEV_300/sap/bc/adt/cts/transportchecks",
+        "filestore_ui5_bsp": "/destinations/BGE_DEV_300/sap/bc/adt/filestore/ui5-bsp/objects",
+        "search": "/destinations/BGE_DEV_300/sap/bc/adt/repository/informationsystem/search",
+        "ato_settings": "/destinations/BGE_DEV_300/sap/bc/adt/ato/settings",
+        "ui5_rt_version": "/destinations/BGE_DEV_300/sap/bc/adt/filestore/ui5-bsp/ui5-rt-version",
+        "description": "BGE DEV 300 Unit Testing",
+        "proxyUrlPrefix": "/destinations/BGE_DEV_300"
+    },
+    "BSPName": "MM_PR_PRCS1",
+    "namespace": "ui.ssuite.s2p.mm.pur.pr.prcss.s1",
+    "resourceBundle": "i18n/i18n.properties",
+    "parentResourceRootUrl": "/destinations/BGE_DEV_300/sap/bc/ui5_ui5/sap/MM_PR_PRCS1"
+}

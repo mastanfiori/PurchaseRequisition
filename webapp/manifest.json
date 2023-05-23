@@ -1,0 +1,60 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "ui.ssuite.s2p.mm.pur.pr.prcss.s1.MM_PR_PRCS1Extension",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "sourceTemplate": {
+            "id": "@sap/ux-app-migrator:freestyle",
+            "version": "1.9.6",
+            "toolsId": "fef54c41-4a62-406d-bd80-2ae928d64bcc"
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "dependencies": {
+            "minUI5Version": "1.90.7"
+        },
+        "extends": {
+            "component": "ui.ssuite.s2p.mm.pur.pr.prcss.s1",
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "ui.ssuite.s2p.mm.pur.pr.prcss.s1.controller.Worklist": {
+                        "controllerName": "ui.ssuite.s2p.mm.pur.pr.prcss.s1.MM_PR_PRCS1Extension.controller.WorklistCustom"
+                    }
+                },
+                "sap.ui.viewReplacements": {
+                    "ui.ssuite.s2p.mm.pur.pr.prcss.s1.view.Worklist": {
+                        "viewName": "ui.ssuite.s2p.mm.pur.pr.prcss.s1.MM_PR_PRCS1Extension.view.WorklistCustom",
+                        "type": "XML"
+                    }
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    }
+}
