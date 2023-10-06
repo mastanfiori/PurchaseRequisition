@@ -4,16 +4,16 @@ sap.ui.define([
 	"sap/ui/core/routing/History",
 	"ui/ssuite/s2p/mm/pur/pr/prcss/s1/model/formatter",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/m/Token"
-], function (B, J, H, f, F, a,Token) {
+	"sap/ui/model/FilterOperator"
+], function (B, J, H, f, F, a) {
 	"use strict";
-	return sap.ui.controller("ui.ssuite.s2p.mm.pur.pr.prcss.s1.MM_PR_PRCS1Extension.controller.WorklistCustom", {
+	return sap.ui.controller("ui.ssuite.s2p.mm.pur.pr.prcss.s1.MM_PR_PRCS1Extension1.controller.WorklistCustom", {
 		    formatter: f,
 		    onInit: function () {
 		        var r = sap.ui.core.UIComponent.getRouterFor(this);
 		        this.oRouter = r;
 		        this.CreateButtonsEnableCheck();
+				this.initView = true;
 		        this.bFirstRun = true;
 		        this.batchCallNum = 0;
 		        this.oStartupParameters = this.getMyComponent().getComponentData().startupParameters;
@@ -32,8 +32,8 @@ sap.ui.define([
 				//Extended Code to fetch Parameters from GUI to Filters
 				
 			this.getGUIParameters();
-
 		    },
+
 			getGUIParameters: function (oEvt) {
 				//Fetching Parameters from GUI
 				var href = window.location.href;
@@ -47,10 +47,11 @@ sap.ui.define([
 					if(paramstr !== undefined){
 					var paramArr = paramstr.split("&");
 					var paramObj = {};
-					debugger;
+					// debugger;
 					paramObj.PurchaseRequisition = "";
 					paramObj.PurchaseRequisitionItem = "";
 					var purReq = []; var purItem = [];
+					
 					this.purRequsition = purReq;
 					this.purReqItem = purItem;
 					$.each(paramArr, function (i, ele) {
@@ -85,7 +86,7 @@ sap.ui.define([
 				this.byId("idSmartFilterPR").attachInitialized(this._onInitSmartFilterBar.bind(this));
 			},
 			_onInitSmartFilterBar: function (purReq,purItem) {
-				debugger;
+				// debugger;
 				var data = this.purRequsition;
 				var data2 = this.purReqItem;
 				let uniqueReq = [...new Set(data)];
@@ -109,7 +110,7 @@ sap.ui.define([
 				arr.push(Token);
 			}
 			var oMultiInput1 = this.byId("idSmartFilterPR").getControlByKey("PurchaseRequisition");
-			
+			// var oMultiInput1 = this.byId("PurchaseRequisition");
 			oMultiInput1.setTokens(arr);
 
 			for(var j = 0; j < uniqueItem.length; j++){
@@ -120,7 +121,7 @@ sap.ui.define([
 				array.push(Token2);
 			}
 			var oMultiInput = this.byId("idSmartFilterPR").getControlByKey("PurchaseRequisitionItem");
-			
+			// var oMultiInput = this.byId("PurchaseRequisitionItem");
 			oMultiInput.setTokens(array);
 				// for(var i = 0; i < data.length; i++){
 				// 	// this.byId("idSmartFilterPR").getControlByKey("PurchaseRequisition").setValue(data[i]);	
@@ -133,8 +134,10 @@ sap.ui.define([
 				// 		new sap.m.Token({text: data2[j], key: data2[j]})
 				// 	]);	
 				// }
-
+				// var that=this;
+				// that.getView().byId("idPRItemTable").rebindTable();
 			},
+		    
 		    setDefaultFitlerParameters: function () {
 		        var s = this.oStartupParameters;
 		        this.pushFiltertoHeader("PurchasingOrganization", s.PurchasingOrganization);
@@ -172,6 +175,8 @@ sap.ui.define([
 		        window.history.go(-1);
 		    },
 		    onBeforeRebindTable: function (e) {
+				
+// debugger;
 		        var s = [];
 		        if (e.getParameter("bindingParams")) {
 		            var b = e.getParameter("bindingParams");
@@ -191,6 +196,38 @@ sap.ui.define([
 		                        };
 		                    })].concat(s);
 		            }
+					debugger;
+					//Default Sorting for Material And Plant on 25AUG23
+					var mBindingParams = e.getParameter("bindingParams");
+				if(this.initView){
+				
+					 // to apply the sort error
+					//  mBindingParams.sorter.push([new sap.ui.model.Sorter({ path: "Material", ascending: true}),new sap.ui.model.Sorter({ path: "Plant", ascending: true})]);
+					//  mBindingParams.sorter.push([]);
+
+					 //to sort Initial multiple fileds.
+					 mBindingParams.sorter = [new sap.ui.model.Sorter({ path: "Material", ascending: true}),new sap.ui.model.Sorter({ path: "Plant", ascending: true})];
+					//  mBindingParams.sorter = [new sap.ui.model.Sorter({ path: "Plant", ascending: true})];
+					 // to short the sorted column in P13N dialog
+					  var oSmartTable = e.getSource();
+					  oSmartTable.applyVariant({
+						sort: {
+							sortItems: [
+								{
+								columnKey: "idMaterialyColumnKey",
+								operation: "Ascending"
+							},
+							{
+								columnKey: "idPlantColumnKey",
+								operation: "Ascending"
+							}
+						]
+						   }
+					  });
+					 // to prevent applying the initial sort all times 
+					this.initView = false;
+				}
+
 		        }
 		        if (this.bFirstRun === true) {
 		            var S = [];
@@ -288,11 +325,11 @@ sap.ui.define([
 		                    var N = new sap.ui.model.Filter("PurchaseRequisitionItem", sap.ui.model.FilterOperator.Contains, L);
 		                    S.push(N);
 		                }
-		                if (c) {
-		                    var M = new sap.ui.model.Filter("PurchaseRequisition", sap.ui.model.FilterOperator.Contains, c);
-		                    this.byId("idSmartFilterPR").getBasicSearchControl().setValue(c);
-		                    S.push(M);
-		                }
+		                // if (c) {
+		                //     var M = new sap.ui.model.Filter("PurchaseRequisition", sap.ui.model.FilterOperator.Contains, c);
+		                //     this.byId("idSmartFilterPR").getBasicSearchControl().setValue(c);
+		                //     S.push(M);
+		                // }
 		                this.bFirstRun = false;
 		            }
 		            if (S.length > 0) {
